@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static at.sp.wpgg.Properties.*;
+
 @RestController
-@RequestMapping(path = "api/v0/summoner")
+@RequestMapping(path = "api/" + API_VERSION + "/summoner")
 public class SummonerController {
 
     private final SummonerService summonerService;

@@ -1,5 +1,6 @@
 package at.sp.wpgg.summoner;
 
+import at.sp.wpgg.match.Match;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -30,9 +31,9 @@ public class Summoner {
             generator = "summoner_sequence"
     )
     @Column(
-            name = "id"
+            name = "systemId"
     )
-    private long id;
+    private long systemId;
 
     @Column(
             name = "accountId"
@@ -52,7 +53,7 @@ public class Summoner {
     @Column(
             name = "name"
     )
-    private int name;
+    private String name;
 
     @Column(
             name = "riotId",
@@ -64,7 +65,7 @@ public class Summoner {
             name = "puuid",
             length = 78
     )
-    private int puuid;
+    private String puuid;
 
     @Column(
             name = "start_timestamp",
@@ -85,34 +86,29 @@ public class Summoner {
     //)
     //@JsonBackReference
     //private Customer customer;
-//
-//
-    ////Mapping for foreign keys
-    //@OneToMany(
-    //        mappedBy = "summoner",
-    //        cascade = CascadeType.ALL,
-    //        fetch = FetchType.LAZY
-    //)
-    //@JsonManagedReference
-    //private List<Number> numbers;
-//
-//
-//
-    ////defaults
+
+
+    //Mapping for foreign keys
+    @OneToMany(
+            mappedBy = "participantPuuids",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @JsonManagedReference
+    private List<Match> matches;
+
+
+
+    //defaults
     //@PrePersist
     //void preInsert() {
     //    if(endTimestamp == null) {
     //        endTimestamp = Timestamp.valueOf("2999-12-31 23:59:59");
     //    }
     //}
-//
-    ////constructors
-    //public Summoner (long id) {
-    //    this.id = id;
-    //}
 
-    public Summoner (long id) {
-        this.id = id;
+    public Summoner (long systemId) {
+        this.systemId = systemId;
     }
 
 }
