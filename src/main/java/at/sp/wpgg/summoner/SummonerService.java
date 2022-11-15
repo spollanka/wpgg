@@ -30,19 +30,19 @@ public class SummonerService {
      */
     public Summoner getSummonerByName(String summonerName, String region) {
 
-        Optional<Summoner> summoner = this.summonerRepository.findSummonerByName(summonerName);
+        Optional<Summoner> summoner = this.summonerRepository.findSummonerByName(summonerName.replace("+", " "));
 
         if (summoner.isPresent()) {
             return summoner.get();
         }
 
-        Summoner summonerApi = riotApi.SummonerBySummonerName(summonerName, region);
+        Summoner summonerApi = riotApi.GetSummonerBySummonerName(summonerName, region);
 
         if (summonerApi.getSystemId() == -1) {
             // summoner does not exist and so does the code to handle it //
         } else if (summonerApi.getSystemId() == -1) {
             // error handling 2b implemented here //
-        }
+        } else summonerRepository.save(summonerApi);
 
         return summonerApi;
     }

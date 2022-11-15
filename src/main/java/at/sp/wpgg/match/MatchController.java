@@ -20,4 +20,10 @@ public class MatchController {
     private MatchController(MatchService matchService) {
         this.matchService = matchService;
     }
+
+    @GetMapping(path = "{region}/{matchId}" )
+    public Match GetMatchById (@PathVariable("region") String region,
+                               @PathVariable("matchId") String matchId) {
+        return matchService.GetMatchByMatchId(matchId, region);
+    }
 }

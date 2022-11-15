@@ -1,5 +1,6 @@
 package at.sp.wpgg.match;
 
+import at.sp.wpgg.summoner.Summoner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -27,21 +29,20 @@ public class Match {
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "summoner_sequence"
+            generator = "match_sequence"
     )
     @Column(
             name="systemId"
     )
     private long systemId;
 
-    @ElementCollection
-    @CollectionTable (
-            name = "match_participants",
-            joinColumns = @JoinColumn( name = "participant_id",
-            foreignKey = @ForeignKey())
-    )
     @Column(
-            name = "participantPuuids"
+            name="matchId"
     )
-    private List<String> participantsPuuids;
+    private String matchId;
+
+    @ManyToMany(
+            mappedBy = "matches"
+    )
+    private Set<Summoner> participants;
 }

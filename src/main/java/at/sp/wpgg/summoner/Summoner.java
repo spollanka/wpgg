@@ -56,10 +56,10 @@ public class Summoner {
     private String name;
 
     @Column(
-            name = "riotId",
+            name = "id",
             length = 63
     )
-    private String riotId;
+    private String id;
 
     @Column(
             name = "puuid",
@@ -68,8 +68,7 @@ public class Summoner {
     private String puuid;
 
     @Column(
-            name = "start_timestamp",
-            nullable = false
+            name = "start_timestamp"
     )
     private Timestamp startTimestamp;
 
@@ -89,12 +88,11 @@ public class Summoner {
 
 
     //Mapping for foreign keys
-    @OneToMany(
-            mappedBy = "participantPuuids",
+    @ManyToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    @JsonManagedReference
+    //@JsonManagedReference
     private List<Match> matches;
 
 
