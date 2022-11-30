@@ -7,7 +7,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -92,8 +94,25 @@ public class Summoner {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    //@JsonManagedReference
-    private List<Match> matches;
+    @JoinTable(
+            name = "summoner_matches"
+            //,joinColumns = {
+            //        @JoinColumn(
+            //                name = "summoner"
+            //        )
+            //},
+            //inverseJoinColumns = {
+            //        @JoinColumn(
+            //                name = "match"
+            //        )
+            //}
+    )
+    private Set<Match> matches = new HashSet<>();
+
+    public void addMatch(Match match) {
+        this.matches.add(match);
+        match.getParticipants().add(this);
+    }
 
 
 

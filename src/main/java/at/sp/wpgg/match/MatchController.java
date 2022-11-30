@@ -1,7 +1,5 @@
 package at.sp.wpgg.match;
 
-import at.sp.wpgg.match.Match;
-import at.sp.wpgg.match.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +22,11 @@ public class MatchController {
     @GetMapping(path = "{region}/{matchId}" )
     public Match GetMatchById (@PathVariable("region") String region,
                                @PathVariable("matchId") String matchId) {
-        return matchService.GetMatchByMatchId(matchId, region);
+
+        Match m = matchService.getMatchByMatchId(matchId, region);
+        System.out.println(m.getMatchId() + ": " + m.getParticipants());
+        return m;
+
+        //return matchService.getMatchByMatchId(matchId, region);
     }
 }

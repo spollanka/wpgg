@@ -1,6 +1,6 @@
-package at.sp.wpgg.riotmatchobject; 
+package at.sp.wpgg.riotmatchtimelineobject;
 import java.util.ArrayList;
-import java.util.List;
+
 public class Event{
     public Object realTimestamp;
     public int timestamp;

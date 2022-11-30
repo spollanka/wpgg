@@ -1,12 +1,15 @@
 package at.sp.wpgg.match;
 
 import at.sp.wpgg.summoner.Summoner;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -44,5 +47,6 @@ public class Match {
     @ManyToMany(
             mappedBy = "matches"
     )
-    private Set<Summoner> participants;
+    @JsonBackReference
+    private Set<Summoner> participants = new HashSet<>();
 }

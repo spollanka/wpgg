@@ -36,7 +36,26 @@ public class SummonerService {
             return summoner.get();
         }
 
-        Summoner summonerApi = riotApi.GetSummonerBySummonerName(summonerName, region);
+        Summoner summonerApi = riotApi.getSummonerBySummonerName(summonerName, region);
+
+        if (summonerApi.getSystemId() == -1) {
+            // summoner does not exist and so does the code to handle it //
+        } else if (summonerApi.getSystemId() == -1) {
+            // error handling 2b implemented here //
+        } else summonerRepository.save(summonerApi);
+
+        return summonerApi;
+    }
+
+    public Summoner getSummonerByPuuid(String puuid, String region) {
+
+        Optional<Summoner> summoner = this.summonerRepository.findSummonerByPuuid(puuid);
+
+        if (summoner.isPresent()) {
+            return summoner.get();
+        }
+
+        Summoner summonerApi = riotApi.getSummonerByPuuid(puuid, region);
 
         if (summonerApi.getSystemId() == -1) {
             // summoner does not exist and so does the code to handle it //

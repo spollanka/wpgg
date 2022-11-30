@@ -1,5 +1,5 @@
-package at.sp.wpgg.riotmatchobject; 
-public class _6{
+package at.sp.wpgg.riotmatchtimelineobject;
+public class _8{
     public ChampionStats championStats;
     public int currentGold;
     public DamageStats damageStats;

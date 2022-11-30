@@ -1,6 +1,6 @@
-package at.sp.wpgg.riotmatchobject; 
+package at.sp.wpgg.riotmatchtimelineobject;
 import java.util.ArrayList;
-import java.util.List;
+
 public class Info{
     public int frameInterval;
     public ArrayList<Frame> frames;

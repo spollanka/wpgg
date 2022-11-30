@@ -1,4 +1,4 @@
-package at.sp.wpgg.riotmatchobject; 
+package at.sp.wpgg.riotmatchtimelineobject;
 public class DamageStats{
     public int magicDamageDone;
     public int magicDamageDoneToChampions;
