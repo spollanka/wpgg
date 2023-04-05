@@ -1,5 +1,5 @@
-package at.sp.wpgg.riotmatchtimelineobject;
-public class VictimDamageReceived{
+package riotmatchtimelineobject;
+public class VictimDamageDealt{
     public boolean basic;
     public int magicDamage;
     public String name;

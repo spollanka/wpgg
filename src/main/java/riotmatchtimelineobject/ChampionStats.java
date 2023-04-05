@@ -1,4 +1,4 @@
-package at.sp.wpgg.riotmatchtimelineobject;
+package riotmatchtimelineobject;
 public class ChampionStats{
     public int abilityHaste;
     public int abilityPower;

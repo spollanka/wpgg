@@ -1,6 +1,6 @@
 package at.sp.wpgg;
 
-import at.sp.wpgg.riotmatchtimelineobject.RiotMatchTimelineObject;
+import riotmatchtimelineobject.RiotMatchTimelineObject;
 import at.sp.wpgg.summoner.Summoner;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
@@ -90,7 +90,7 @@ public class RiotApi implements Serializable {
         }
     }
 
-    public RiotMatchTimelineObject GetMatchObjectByMatchId(String matchId, String region) {
+    public RiotMatchTimelineObject GetMatchObjectByMatchId(String matchId, String region) throws Exception{
 
         String url = HTTPS + region + "." + API_BASE + MATCH_BY_ID + matchId + "/timeline";
         HttpHeaders headers = new HttpHeaders();
@@ -104,7 +104,7 @@ public class RiotApi implements Serializable {
             return o;
         }
         catch (Exception e){
-            return new RiotMatchTimelineObject();
+            throw new Exception("No match");
         }
     }
 }

@@ -1,4 +1,4 @@
-package at.sp.wpgg.riotmatchtimelineobject;
+package riotmatchtimelineobject;
 import com.fasterxml.jackson.annotation.JsonProperty; 
 public class ParticipantFrames{
     @JsonProperty("1") 

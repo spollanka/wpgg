@@ -1,7 +1,7 @@
 package at.sp.wpgg.match;
 
 import at.sp.wpgg.RiotApi;
-import at.sp.wpgg.riotmatchtimelineobject.RiotMatchTimelineObject;
+import riotmatchtimelineobject.RiotMatchTimelineObject;
 import at.sp.wpgg.summoner.SummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;

@@ -1,4 +1,4 @@
-package at.sp.wpgg.riotmatchtimelineobject;
+package riotmatchtimelineobject;
 import java.util.ArrayList;
 
 public class Frame{
